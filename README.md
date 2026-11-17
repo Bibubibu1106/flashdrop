@@ -121,6 +121,21 @@
 
 ---
 
+### Q4：这个工具到底属于「网页工具」还是「App」？什么是 PWA？
+
+它属于一种**「两栖物种」**——专业名称叫 **PWA（Progressive Web App，渐进式 Web 应用）**，通俗来说就是**「能像原生 App 一样安装到手机/电脑桌面上的网页工具」**，同时兼具了「网页」和「App」两者的全部优点：
+
+1. **本质上：它是一个「网页工具（Web Tool）」**
+   - **免下载安装**：不需要去苹果 App Store 或安卓应用商店下载几百兆的安装包，也彻底绕开了苹果 iOS 自研原生 App 个人证书 7 天签名过期的问题。
+   - **分享即用超方便**：朋友或新电脑要用时，输入网址或扫一下二维码，1 秒钟打开就能直接互传。
+   - **云端无感更新**：每次更新代码推送到 GitHub 后，所有设备刷新一下即刻自动升级到最新版，无需手动下载更新包。
+2. **体验上：它可以变成一个「桌面原生级 App」**
+   - **拥有独立桌面图标**：点击页面右上角的 **下载图标（添加到主屏幕）** 后，在你的 iPhone、iPad、安卓手机或电脑桌面上会生成一个专属的闪电图标 **「⚡ 闪传 / Flashdrop」**，和微信、相册并排放在一起。
+   - **独立全屏窗口运行**：从桌面图标点开时，**会自动隐藏浏览器的地址栏和底部前进后退工具栏**，拥有完整的独立全屏界面，在手机多任务后台切换里也是一张独立的 App 卡片。
+   - **可调用系统底层能力**：支持申请屏幕常亮防息屏锁（Screen WakeLock）、调起系统级分享菜单一键存苹果相册、以及安卓系统相册直接分享投递。
+
+---
+
 ## 四、升级版本演进（v1.0 → v8.0）
 
 - **🌱 v1.0（基础原型）**：实现苹果⇄安卓热点免流直连与异网穿透双模架构、6 位私密配对码与二维码秒绑、以及基于配对码的 PBKDF2 + AES-256-GCM 端到端加密传输。
@@ -232,6 +247,21 @@ If you are willing to **install a dedicated native app** on every device (rather
 | **🔌 Dual-Plug USB-C Drive/Cable** | **Offloading tens of GBs of ProRes / 4K video footage** | **100–1000 MB/s** | ✅ Plug & play | ❌ Physical cable | ⭐⭐⭐⭐ |
 
 - **💡 Best Combo Recommendation**: Use **`Flashdrop`** for daily text/OTP/link sharing, quick photo transfers, and instant sharing with friends' phones or computers without installing software; pair it with **`LocalSend`** when offloading hundreds of RAW photos or multi-gigabyte 4K videos over a hotspot.
+
+---
+
+### Q4: Is Flashdrop a "Web Tool" or an "App"? What is a PWA?
+
+It is an **"amphibious hybrid"** technically known as a **PWA (Progressive Web App)**—in plain terms, **a web tool that can be installed onto your phone or computer home screen and run just like a native App**, combining the best of both worlds:
+
+1. **At Its Core: It Is a "Web Tool"**
+   - **Zero App Store Download**: No need to download a hundred-megabyte installer from the Apple App Store or Google Play, and no iOS 7-day developer certificate expiration issues.
+   - **Instant Sharing with Anyone**: Friends or new computers can open the URL or scan the QR code and start transferring in 1 second.
+   - **Seamless Updates**: Whenever code is updated on GitHub, every device automatically gets the latest version upon refresh without manual app updates.
+2. **In User Experience: It Transforms into a "Desktop/Home-Screen App"**
+   - **Dedicated Home Screen Icon**: After tapping the top-right **Download icon (Add to Home Screen)**, a dedicated lightning icon (**⚡ Flashdrop / 闪传**) is placed right on your iPhone, iPad, Android, or PC desktop alongside your native apps.
+   - **Standalone Full-Screen Window**: Launching from the home screen icon **hides the browser address bar and bottom navigation bar**, running as an independent full-screen window with its own card in the system app switcher.
+   - **System-Level Capabilities**: Supports Screen WakeLock (preventing screen sleep during transfers), native OS share-sheet integration for saving directly to Apple Photos, and Android Gallery direct share targets.
 
 ---
 
