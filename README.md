@@ -1,4 +1,4 @@
-# ⚡ 闪传 · Flashdrop (v8.0)
+# ⚡ 闪传 · Flashdrop (v8.5)
 
 <p align="center">
   <strong><a href="#-闪传-简体中文">🇨🇳 简体中文文档</a></strong> &nbsp;|&nbsp; <strong><a href="#-flashdrop-english">🇺🇸 English Documentation</a></strong>
@@ -136,7 +136,7 @@
 
 ---
 
-## 四、升级版本演进（v1.0 → v8.0）
+## 四、升级版本演进（v1.0 → v8.5）
 
 - **🌱 v1.0（基础原型）**：实现苹果⇄安卓热点免流直连与异网穿透双模架构、6 位私密配对码与二维码秒绑、以及基于配对码的 PBKDF2 + AES-256-GCM 端到端加密传输。
 - **🚀 v2.0（系统级直达与多媒体）**：新增安卓 PWA 系统分享菜单直发（`share_target` + Service Worker + IndexedDB 收件箱）、iPhone 快捷指令 `?sendText=` 轻点背面两下秒传剪贴板、4–8 位验证码与网址智能提取按钮、以及音视频页面内直接预览播放。
@@ -145,7 +145,10 @@
 - **🛡️ v5.0–v6.0（滑动窗口可靠传输与夸克浏览器兼容）**：修复夸克浏览器 WebRTC `RTCSessionDescription`/`RTCIceCandidate` 序列化为空 `{}` 的兼容 Bug；选图首毫秒读入 `Uint8Array` 内存快照防止切后台文件句柄失效；加入局域网 ICE 候选缓存队列；保底加密中继升级为 **QoS 1 + 8KB 分片 + 35ms 流控 + 每 30 片（240KB）滑动窗口分段签收与漏包精准补发协议**（通过 33% 强丢包自动化测试）。
 - **✨ v6.5（日常高频实用增强）**：新增 Screen WakeLock 防传大文件自动息屏锁屏、传输失败/取消后一键「🔄 重发」、前端零依赖多文件无损「📦 打包 ZIP」下载、以及右上角浅色/夜间深色模式切换。
 - **🎨 v7.0（全端响应式双栏工作台与半透明磨砂 Bento 美学）**：全站图标锁定 `1:1` 正方形防挤压，平板横屏/电脑宽屏（`≥ 768px`）自动切换为左右双栏工作台；彻底移除全局 `...`（`truncate`/`line-clamp`）文字省略截断，改为自然换行完整呈现；合并右上角浅灰下载图标按钮并在 iOS/安卓常驻显示；三大操作按钮升级为 iOS 风格半透明磨砂玻璃色卡；底部新增 GitHub 仓库入口胶囊。
-- **🌐 v8.0（中英双语国际化与独立品牌命名 · 最新版）**：中文模式应用名独立显示为 **「闪传」**，英文模式独立显示为 **「Flashdrop」**；在「设置」顶部新增 **「界面语言 / Language」** 实时分段切换器（`🇨🇳 简体中文` / `🇺🇸 English`），实现全站所有界面、弹窗、网络状态及动态 Toast 提示 100% 双语化。
+- **🌐 v8.0（中英双语国际化与独立品牌命名）**：中文模式应用名独立显示为 **「闪传」**，英文模式独立显示为 **「Flashdrop」**；在「设置」顶部新增 **「界面语言 / Language」** 实时分段切换器（`🇨🇳 简体中文` / `🇺🇸 English`），实现全站所有界面、弹窗、网络状态及动态 Toast 提示 100% 双语化。
+- **🔔 v8.5（实时上下线感知与发送/接收双向回执确认 · 最新版）**：
+  1. **对方关闭页面秒级下线感知**：结合 **MQTT Last Will（遗嘱消息）**、`pagehide`/`beforeunload` 双通道同步告别信令、DataChannel 关闭探测与 **5 秒心跳 / 15 秒超时看门狗**，当一方关闭网页或断网离开时，另一方界面在 0.1 秒内立即同步为下线状态并弹出下线提醒，告别「假在线白发消息」。
+  2. **发送与接收双阶段送达回执（ACK）**：无论是发文字/剪贴板还是传照片/文件，发送方均实时显示 **「⏳ 本机已发出 · 等待对方确认接收」→「✅ 本机发送成功 · 对方已接收」**；若对方已下线或未收到，则醒目提示 **「⚠️ 仅本机发出 · 对方未确认接收（对方可能已下线）」** 并提供一键 **「🔄 重新发送」** 按钮，接收方也同步显示 **「✅ 已接收成功 · 已向对方发送回执」**。
 
 ---
 
@@ -265,7 +268,7 @@ It is an **"amphibious hybrid"** technically known as a **PWA (Progressive Web A
 
 ---
 
-## 4. Version Evolution Changelog (v1.0 → v8.0)
+## 4. Version Evolution Changelog (v1.0 → v8.5)
 
 - **🌱 v1.0 (Core Prototype)**: WebRTC P2P direct transfer across iOS & Android over Hotspot/LAN and cross-network; 6-digit pair code, QR code binding, and PBKDF2 + AES-256-GCM end-to-end encryption.
 - **🚀 v2.0 (System-Level Shortcuts & Media)**: Android PWA `share_target` system share-sheet integration, iOS `?sendText=` Back-Tap clipboard shortcut, smart OTP/URL extraction, and inline video/audio preview.
@@ -274,4 +277,7 @@ It is an **"amphibious hybrid"** technically known as a **PWA (Progressive Web A
 - **🛡️ v5.0–v6.0 (Sliding-Window Reliable Transfer & Quark Browser Fix)**: Fixed WebRTC `RTCSessionDescription`/`RTCIceCandidate` empty `{}` serialization bug on Quark Browser, first-millisecond `Uint8Array` memory snapshot on file selection, early LAN ICE candidate queueing, and a **30-chunk (240KB) sliding-window ACK + selective retransmission protocol** verified under 33% simulated packet loss.
 - **✨ v6.5 (Daily Quality-of-Life Enhancements)**: Screen WakeLock API to prevent sleep during large transfers, one-tap `Retry / Resend`, zero-dependency client-side `ZIP All` bundler, and Dark Mode.
 - **🎨 v7.0 (Responsive Dual-Column Workspace & Frosted Bento UI)**: Responsive 12-column desktop/tablet dual-pane layout (`≥768px`), `1:1` aspect-square icon locks, complete removal of `...` (`truncate`/`line-clamp`) text truncation in favor of natural wrapping, unified top-right action icons, translucent frosted glass Bento action cards, and footer GitHub repository link.
-- **🌐 v8.0 (Bilingual i18n Edition — `闪传` / `Flashdrop` · Latest)**: Independent brand naming (**`闪传`** in Simplified Chinese, **`Flashdrop`** in English), live language switcher in Settings (`🇨🇳 简体中文` / `🇺🇸 English`), and 100% bilingual coverage across all UI components, modals, status banners, and toast notifications.
+- **🌐 v8.0 (Bilingual i18n Edition — `闪传` / `Flashdrop`)**: Independent brand naming (**`闪传`** in Simplified Chinese, **`Flashdrop`** in English), live language switcher in Settings (`🇨🇳 简体中文` / `🇺🇸 English`), and 100% bilingual coverage across all UI components, modals, status banners, and toast notifications.
+- **🔔 v8.5 (Instant Offline Detection & Two-Stage Delivery Receipts · Latest)**:
+  1. **Instant Peer Offline Detection**: Combines **MQTT Last Will and Testament (`will`)**, synchronous `pagehide`/`beforeunload` goodbye packets over both DataChannel and MQTT, and a **5s heartbeat / 15s watchdog timer** so that when one device closes the tab or disconnects, the other device immediately updates its status and notifies the user.
+  2. **End-to-End Delivery Receipts (`clipboard-ack` & `file-ack`)**: Both clipboard texts and file transfers now display explicit two-stage delivery states (**`⏳ Sent locally · Waiting for peer receipt...` → `✅ Sent & Received by Peer`** vs **`⚠️ Sent locally · Not received by peer (offline)`** with a one-tap **`🔄 Resend`** button).
